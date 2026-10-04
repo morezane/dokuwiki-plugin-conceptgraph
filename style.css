@@ -1,0 +1,256 @@
+/**
+ * Concept Graph Plugin - styles
+ *
+ * The canvas is painted with a fixed dark palette from script.js, so the widget
+ * brings its own colours instead of inheriting the template's: on a light
+ * template the inherited background would leave light labels on a light stage.
+ *
+ * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ */
+
+.conceptgraph {
+    --cg-bg: #1a1b26;
+    --cg-surface: #16161e;
+    --cg-border: #2f334d;
+    --cg-text: #c0caf5;
+    --cg-muted: #565f89;
+    --cg-accent: #7aa2f7;
+
+    color: var(--cg-text);
+    margin: 1.5em 0;
+}
+
+/* Header navigation link styles live in the template, see
+   lib/tpl/<template>/css/_conceptgraph.css: the link shows on every page but
+   these stylesheets are only loaded where the graph itself is. */
+
+.conceptgraph .cg-controls {
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+    margin-bottom: .6em;
+}
+
+.conceptgraph .cg-search {
+    flex: 1 1 14em;
+    min-width: 10em;
+    padding: .45em .6em;
+    border: 1px solid var(--cg-border);
+    border-radius: 4px;
+    background: var(--cg-surface);
+    color: var(--cg-text);
+    font-size: .95em;
+}
+
+.conceptgraph .cg-surprise,
+.conceptgraph .cg-reset,
+.conceptgraph .cg-fullscreen,
+.conceptgraph .cg-exit {
+    padding: .45em .9em;
+    border: 1px solid var(--cg-border);
+    border-radius: 4px;
+    background: var(--cg-surface);
+    color: var(--cg-text);
+    cursor: pointer;
+    font-size: .95em;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.conceptgraph .cg-surprise:hover,
+.conceptgraph .cg-reset:hover,
+.conceptgraph .cg-fullscreen:hover,
+.conceptgraph .cg-exit:hover {
+    border-color: var(--cg-accent);
+    color: var(--cg-accent);
+}
+
+/* Fullscreen: pin the widget over the whole viewport so the wiki chrome
+   (header, sidebar, page tools) is not visible behind it. */
+.conceptgraph-fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+    padding: .8em 1em;
+    background: var(--cg-bg);
+    color: var(--cg-text);
+}
+
+.conceptgraph-fullscreen .cg-stage {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+}
+
+.conceptgraph-fullscreen .cg-controls {
+    flex: 0 0 auto;
+}
+
+.conceptgraph-fullscreen .cg-legend,
+.conceptgraph-fullscreen .cg-stats {
+    flex: 0 0 auto;
+    margin: .3em 0 0;
+}
+
+/* Native fullscreen needs the backdrop to follow the theme too */
+.conceptgraph-fullscreen:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+.conceptgraph .cg-stage {
+    position: relative;
+    height: 26em;
+    min-height: 20em;
+    border: 1px solid var(--cg-border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--cg-bg);
+}
+
+.conceptgraph .cg-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.conceptgraph .cg-canvas:active {
+    cursor: grabbing;
+}
+
+.conceptgraph .cg-tooltip {
+    position: absolute;
+    z-index: 5;
+    min-width: 12em;
+    max-width: 16em;
+    padding: .5em .6em;
+    border: 1px solid var(--cg-border);
+    border-radius: 5px;
+    background: var(--cg-surface);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+    font-size: .85em;
+    pointer-events: none;
+}
+
+.conceptgraph .cg-tip-title {
+    font-weight: bold;
+    color: var(--cg-text);
+    margin-bottom: .2em;
+}
+
+.conceptgraph .cg-tip-meta {
+    color: var(--cg-muted);
+    font-size: .9em;
+}
+
+.conceptgraph .cg-tip-list {
+    list-style: none;
+    margin: .4em 0 0;
+    padding: 0;
+}
+
+.conceptgraph .cg-tip-list li {
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    padding: .1em 0;
+    color: var(--cg-muted);
+}
+
+.conceptgraph .cg-tip-kind {
+    flex: 0 0 .55em;
+    height: .55em;
+    border-radius: 50%;
+}
+
+.conceptgraph .cg-tip-link { background: #e0af68; }
+.conceptgraph .cg-tip-sim { background: #7dcfff; }
+
+.conceptgraph .cg-tip-more {
+    margin-top: .3em;
+    color: var(--cg-muted);
+    font-size: .85em;
+}
+
+.conceptgraph .cg-path {
+    position: absolute;
+    top: .6em;
+    left: .6em;
+    z-index: 4;
+    max-width: 18em;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: .5em .7em;
+    border: 1px solid var(--cg-border);
+    border-left: 3px solid #f7768e;
+    border-radius: 5px;
+    background: var(--cg-surface);
+    font-size: .85em;
+}
+
+.conceptgraph .cg-path-head {
+    font-weight: bold;
+    margin-bottom: .3em;
+    color: #f7768e;
+}
+
+.conceptgraph .cg-path ol {
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.conceptgraph .cg-path li {
+    padding: .12em 0;
+    line-height: 1.35;
+}
+
+.conceptgraph .cg-legend {
+    display: flex;
+    gap: 1.2em;
+    flex-wrap: wrap;
+    margin: .5em 0 .2em;
+    font-size: .85em;
+    color: var(--cg-muted);
+}
+
+.conceptgraph .cg-legend span {
+    display: flex;
+    align-items: center;
+    gap: .35em;
+}
+
+.conceptgraph .cg-key {
+    display: inline-block;
+    width: 1.4em;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.conceptgraph .cg-key-link { background: #e0af68; }
+.conceptgraph .cg-key-sim { background: #7dcfff; }
+.conceptgraph .cg-key-path { background: #f7768e; height: 3px; }
+
+.conceptgraph .cg-stats {
+    font-size: .85em;
+    color: var(--cg-muted);
+}
+
+.conceptgraph .cg-stats b {
+    color: var(--cg-text);
+}
+
+.conceptgraph .cg-error {
+    margin: .6em 0;
+    padding: .6em .8em;
+    border: 1px solid #f7768e;
+    border-radius: 5px;
+    color: #f7768e;
+}
