@@ -3,5 +3,5 @@ author morezane
 email  pfr.morezane@morezane.cl
 date   2026-10-04
 name   Concept Graph Plugin
-desc   Builds a conceptual graph of your wiki from TF-IDF text similarity plus explicit links, with a serendipity finder
-url    https://www.dokuwiki.org/plugin:conceptgraph
+desc   Construye un grafo conceptual del wiki a partir de la similitud de texto TF-IDF más los enlaces explícitos, con un buscador de serendipia
+url    https://github.com/morezane/dokuwiki-plugin-conceptgraph
