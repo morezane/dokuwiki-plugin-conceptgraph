@@ -756,7 +756,6 @@ $ids = array_map('strval', array_keys($this->vectors));
         $html .= '<button type="button" class="cg-surprise">' . hsc($this->getLang('surprise')) . '</button>';
         // in overlay mode the close control replaces the fullscreen toggle: the
         // graph already covers the viewport, so the only useful action is out
-        $html .= '<button type="button" class="cg-surprise">' . hsc($this->getLang('surprise')) . '</button>';
         if ($full) {
             $html .= '<a class="cg-exit" href="' . $exiturl . '" rel="nofollow">' .
                 hsc($this->getLang('exitscreen')) . '</a>';

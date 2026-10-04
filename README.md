@@ -99,7 +99,6 @@ cada página, así que añadir, borrar o editar cualquier página la invalida so
 | `script.js` | Renderizador sobre `<canvas>`, simulador de fuerzas, buscador y serendipia. |
 | `style.css` | Estilos del widget, los controles, la leyenda y el modo pantalla completa. |
 | `lang/es/`, `lang/en/` | Textos de la interfaz. |
-| `zz/` | Scripts de depuración, no hacen falta en producción. |
 
 ### Cómo se calcula la similitud
 
@@ -127,13 +126,6 @@ cada página, así que añadir, borrar o editar cualquier página la invalida so
   contenido de una página pueda cerrar la etiqueta y romper el HTML.
 - **El marcado se escapa una sola vez.** `wl()` ya devuelve una URL segura para
   HTML, y aplicarle `hsc()` encima escaparía los `&` dos veces.
-
-## Problemas conocidos
-
-- El botón **Sorpréndeme** aparece duplicado en la barra de controles: el bloque
-  que lo dibuja está escrito dos veces seguidas en `renderWidget()`.
-- Los archivos de `zz/` son scripts de depuración accesibles por URL. No hacen
-  falta para que el plugin funcione y conviene borrarlos en producción.
 
 ## Licencia
 
